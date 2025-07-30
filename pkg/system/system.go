@@ -369,6 +369,7 @@ func (sc *Controller) upgradeNydusDaemon(d *daemon.Daemon, c upgradeRequest, man
 		Supervisor: d.Supervisor,
 	}
 	newDaemon.CloneRafsInstances(d)
+	newDaemon.IncRef()
 
 	s := path.Base(d.GetAPISock())
 	next, err := buildNextAPISocket(s)

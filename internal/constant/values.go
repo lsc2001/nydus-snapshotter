@@ -55,7 +55,8 @@ const (
 )
 
 const (
+	FailoverPolicyNone    string = "none"
 	FailoverPolicyResend  string = "resend"
 	FailoverPolicyFlush   string = "flush"
-	DefaultFailoverPolicy string = FailoverPolicyResend
+	DefaultFailoverPolicy string = FailoverPolicyNone
 )

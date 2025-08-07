@@ -108,6 +108,7 @@ const (
 )
 
 const (
+	FailoverPolicyNone   string = constant.FailoverPolicyNone
 	FailoverPolicyResend string = constant.FailoverPolicyResend
 	FailoverPolicyFlush  string = constant.FailoverPolicyFlush
 )
@@ -295,7 +296,8 @@ func ValidateConfig(c *SnapshotterConfig) error {
 	if c.DaemonConfig.ThreadsNumber > 1024 {
 		return errors.Errorf("nydusd worker thread number %d is too big, max 1024", c.DaemonConfig.ThreadsNumber)
 	}
-	if c.DaemonConfig.FailoverPolicy != FailoverPolicyResend &&
+	if c.DaemonConfig.FailoverPolicy != FailoverPolicyNone &&
+		c.DaemonConfig.FailoverPolicy != FailoverPolicyResend &&
 		c.DaemonConfig.FailoverPolicy != FailoverPolicyFlush {
 		return errors.Errorf("invalid failover policy %q", c.DaemonConfig.FailoverPolicy)
 	}
